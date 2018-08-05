@@ -1,0 +1,7 @@
+{% extends "mainApp/wrapper.html" %}
+{% block content %}
+  {% for post in object_list %}
+    <h4>{{post.title}}</h4>
+    <i>{{post.date | "d-m-Y"}}</i>
+  {% endfor %}
+{% endblock %}
