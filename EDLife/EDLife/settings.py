@@ -25,7 +25,7 @@ SECRET_KEY = '^a1jaov$6mmu87i$nfy^uw)ni-6pi%tte1^jt&4_&$4tbqlgb+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -75,12 +75,16 @@ WSGI_APPLICATION = 'EDLife.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#    }
-#}
+DATABASES = {
+   'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'EDLIfe',
+        'USER': 'itameurjntahvs',
+        'PASSWORD': '3dce68359a811226f2f44026d6799bedf118dd98a218855eff5a1df3638bcda7',
+        'HOST': 'ec2-23-23-216-40.compute-1.amazonaws.com',
+        'PORT': '5432',
+    }
+}
 
 
 # Password validation
@@ -120,3 +124,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+import dj_database_url
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
