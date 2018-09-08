@@ -1,0 +1,17 @@
+{% extends 'mainApp/wrapper.html' %}
+
+{% block login %}
+  <div class='large-offset-3 large-6 columns'>
+    <form action="/auth/" method="post">
+      {% csrf_token %}
+      <label for='username'>Имя пользователя</label>
+      <input type='text' name='username' id='username'>
+      <label for='password'>Пароль</label>
+      <input type='text' name='password' id='password'>
+      {% if login_error %}
+        <label class='error'>{{ login_error }}</label>
+      {% endif %}
+      <input class='button' type="submit" value="Войти">
+    </form>
+  </div>
+{% endblock %}

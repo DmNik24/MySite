@@ -1,0 +1,17 @@
+{% extends "mainApp/wrapper.html" %}
+
+{% block content %}
+<div class="container-fluid">
+<div class="row">
+  <div class="col-lg-6"/>
+<div  class="col-lg-6">
+    <h4 class="text-info">{{articles.title}}</h4>
+    <h5 align="center"><i>{{articles.post|safe|linebreaks}}</i></h5>
+    <h6 align="right">{{articles.date|date:"d-m-Y H:i:s"}}</h6>
+    </div>
+    {% if articles.author == user %}
+    <a class="btn btn-light btn-md" style="background-color:#55A29F" href="/news/edit_post/{{articles.id}}/"><font color="white">Редактировать</font></a>
+    {% endif %}
+</div>
+</div>
+{% endblock %}

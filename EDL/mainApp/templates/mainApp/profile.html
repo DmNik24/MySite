@@ -1,0 +1,27 @@
+{% extends "mainApp/wrapper.html" %}
+
+{% block content %}
+<div class="container-fluid">
+<div class="row">
+  <div class="col-lg-6">
+    <div class='row'>
+      <div class='col-lg-5' >
+        <h1 style="color:#4B2455">Ваш логин:<i>{{ user }}</i> </h1>
+      </div>
+      <div class='col-lg-7'></div>
+    </div>
+      <div>
+    <a class="btn btn-success btn-md" style="background-color:#55A29F" href="/add_post/"><font color="white">Создать пост</font></a>
+  </div>
+  </div>
+<div  class="col-lg-6">
+  {%for post in object_list%}
+  {% if post.author == user %}
+    <a href="/news/{{post.id}}"><h4>{{post.title}}</h4></a>
+    <h6>{{post.date|date:"d-m-Y"}}</h6>
+  {% endif %}
+  {% endfor %}
+
+</div>
+</div>
+{% endblock %}

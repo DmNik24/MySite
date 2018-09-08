@@ -1,0 +1,20 @@
+{% extends "mainApp/wrapper.html" %}
+{% block content %}
+<div class='container-fluid'>
+<form action="{% url 'post_create' %}" method="post">
+  {% csrf_token %}
+  {% for field in form %}
+      <div class='form-group'>
+        {% if fields.errors %}
+          <div class='alert alert-danger'>
+            {{ field.errors }}
+          </div>
+        {% endif %}
+        {{field.label}}
+        {{ field }}
+      </div>
+  {% endfor %}
+  <input class='button' type="submit" value="Сохранить">
+</form>
+</div>
+{% endblock %}

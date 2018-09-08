@@ -1,0 +1,20 @@
+{% extends "mainApp/wrapper.html" %}
+{% block content %}
+   <nav class="navbar navbar-expand-lg navbar-default bg-light" >
+        <div class="container">
+        <ul class="nav nav-tabs" role="tablist">
+          <li><a class="nav-link active" href="#news" role="tab" data-toggle="tab"><font color=#4B2455><small>Все темы</small></font></a></li>
+        </ul>
+      </div>
+
+    </nav>
+<div class="row" style="padding:7%">
+  <div class="col-lg-6">
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane active" id="news">{% include "posts/posts.html" %}</div>
+    </div>
+  </div>
+  <div class="col-lg-3">
+  </div>
+</div>
+{% endblock %}
