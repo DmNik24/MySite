@@ -1,20 +1,20 @@
 {% extends "mainApp/wrapper.html" %}
-
 {% block content %}
 <div class='container-fluid'>
-<form action="/news/edit_post/save/" method="post">
+<form action="{% url 'posts:update-post' pk=articles.id %}" method="post">
   {% csrf_token %}
-  <div class='cow'>
-    <div class=''>
-  <label for='title'>Название статьи</label>
-  <input class='form-control' type='text' name='title' id='title' value={{articles.title}}>
-    </div>
-    <div class=''>
-  <label for='text'>Содержание</label>
-  <input class='form-control' type='text' name='text' id='text'  value={{articles.post}}>
-    </div>
+  {% for field in form %}
+      <div class='form-group'>
+        {% if fields.errors %}
+          <div class='alert alert-danger'>
+            {{ field.errors }}
+          </div>
+        {% endif %}
+        {{field.label}}
+        {{ field }}
+      </div>
+  {% endfor %}
   <input class='button' type="submit" value="Сохранить">
-</div>
 </form>
 </div>
 {% endblock %}

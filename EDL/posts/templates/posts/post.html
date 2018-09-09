@@ -10,7 +10,7 @@
     <h6 align="right">{{articles.date|date:"d-m-Y H:i:s"}}</h6>
     </div>
     {% if articles.author == user %}
-    <a class="btn btn-light btn-md" style="background-color:#55A29F" href="/news/edit_post/{{articles.id}}/"><font color="white">Редактировать</font></a>
+    <a class="btn btn-light btn-md" style="background-color:#55A29F" href="{% url 'posts:update-post' articles.id %}"><font color="white">Редактировать</font></a>
     {% endif %}
 </div>
 </div>

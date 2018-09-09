@@ -3,6 +3,7 @@ from . import views
 from django.views.generic import ListView, DetailView
 from posts.models import Articles
 
+app_name = 'mainApp'
 urlpatterns=[
     #url(r'^$',views.index, name="index"),
     #url(r'^$', views.MainView.as_view(), name='index'),

@@ -14,6 +14,9 @@ from django.template.context_processors import csrf
 from posts.forms import PostForm
 from django.contrib.auth.hashers import make_password
 from posts.models import Articles
+from django.views.generic import View, ListView, UpdateView
+from posts.models import *
+from mainApp import urls
 # Create your views here.
 
 class MainView(TemplateView):
@@ -50,12 +53,6 @@ class AddPost(View):
             new_post.save()
             return redirect('/')
          return render(request, 'addPost.html', context={'form':bound_form})
-
-class EditPost(View):
-     model = Articles
-     model_form = PostForm
-     template = 'posts/edit_post.html'
-
 
 def login(request):
     args = {}

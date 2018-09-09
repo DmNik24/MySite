@@ -1,7 +1,7 @@
 {% extends "mainApp/wrapper.html" %}
 {% block content %}
 <div class='container-fluid'>
-<form action="{% url 'post_create' %}" method="post">
+<form action="{% url 'mainApp:post_create' %}" method="post">
   {% csrf_token %}
   {% for field in form %}
       <div class='form-group'>
