@@ -17,6 +17,8 @@ from posts.models import Articles
 from django.views.generic import View, ListView, UpdateView
 from posts.models import *
 from mainApp import urls
+from django.contrib.auth.models import User
+
 # Create your views here.
 
 class MainView(TemplateView):
@@ -53,6 +55,24 @@ class AddPost(View):
             new_post.save()
             return redirect('/')
          return render(request, 'addPost.html', context={'form':bound_form})
+
+class ViewProfile(View):
+    template_name = 'mainApp/profile.html'
+    def get(self, request, pk):
+        model = Articles
+        m = model.objects.all()
+        for obj in m:
+            if obj.author.id == int(pk):
+                usr = obj.author
+        return render(request, self.template_name, context={'usr':usr, 'models':m})
+        #user = model.objects.get(author.id == pk)
+        #current_user = model.objects.get(author)
+        #context ={
+    #        'list_posts':current_user
+    #    }
+    #    return render(request, template_name, context)
+
+
 
 def login(request):
     args = {}

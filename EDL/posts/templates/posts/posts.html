@@ -2,5 +2,5 @@
 
     <a href="/news/{{pos.id}}"><h4>{{pos.title}}</h4></a>
     <i>{{pos.post}}</i>
-    <h6>{{pos.date|date:"d-m-Y"}} Создал: {{pos.author}}</h6>
+    <h6>{{pos.date|date:"d-m-Y"}} Создал:<a href="{% url 'mainApp:profile' pos.author.id %}"> {{pos.author}}</a></h6>
   {% endfor %}
